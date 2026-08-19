@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basketful — Small Things, Delivered Well</title>
+<meta name="description" content="A small e-commerce storefront built with vanilla HTML, CSS and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo">Basketful<span class="logo-dot">.</span></a>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search for anything…" aria-label="Search products">
+      <button id="searchClearBtn" class="search-clear" hidden aria-label="Clear search">✕</button>
+    </div>
+
+    <button class="cart-toggle" id="cartToggle" aria-label="Open cart">
+      <span class="cart-icon">🧺</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+
+  <nav class="category-nav" id="categoryNav">
+    <!-- filled by JS -->
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="hero-eyebrow">Free shipping over $50</p>
+    <h1 class="hero-title">Everything you need,<br>nothing you don't.</h1>
+    <p class="hero-sub">A small catalog, honestly organized. Browse, add to your basket, check out — all in your browser.</p>
+  </div>
+</section>
+
+<!-- ============ MAIN ============ -->
+<main class="wrap">
+  <div class="results-bar">
+    <span id="resultsCount">Showing all products</span>
+    <select id="sortSelect" aria-label="Sort products">
+      <option value="default">Sort: Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating-desc">Highest Rated</option>
+    </select>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+    <!-- filled by JS -->
+  </div>
+
+  <p class="no-results" id="noResults" hidden>No products match your search. Try a different keyword.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Built by Arta Solhivand — plain HTML, CSS &amp; JavaScript, no frameworks.</p>
+    <p class="footer-year">© <span id="year"></span> Basketful</p>
+  </div>
+</footer>
+
+<!-- ============ PRODUCT QUICK VIEW MODAL ============ -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-visual" id="modalVisual"></div>
+    <div class="modal-body">
+      <p class="modal-category" id="modalCategory"></p>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-rating" id="modalRating"></p>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-footer">
+        <span class="modal-price" id="modalPrice"></span>
+        <button class="btn btn-primary" id="modalAddBtn">Add to Basket</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-backdrop" id="cartBackdrop" hidden></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h2>Your Basket</h2>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+
+  <div class="cart-items" id="cartItems">
+    <!-- filled by JS -->
+  </div>
+
+  <p class="cart-empty" id="cartEmpty">Your basket is empty.</p>
+
+  <div class="cart-footer" id="cartFooter" hidden>
+    <div class="cart-total-row">
+      <span>Subtotal</span>
+      <b id="cartSubtotal">$0.00</b>
+    </div>
+    <button class="btn btn-primary btn-block" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+
+<!-- ============ ORDER CONFIRMATION ============ -->
+<div class="modal-backdrop" id="confirmBackdrop" hidden>
+  <div class="modal modal--confirm">
+    <div class="confirm-icon">✓</div>
+    <h2>Order placed!</h2>
+    <p id="confirmText"></p>
+    <button class="btn btn-primary" id="confirmCloseBtn">Continue Shopping</button>
+  </div>
+</div>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
