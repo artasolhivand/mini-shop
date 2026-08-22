@@ -5,7 +5,6 @@ let currentCategory = 'All';
 let currentSearch = '';
 let currentSort = 'default';
 let cart = {}; // { productId: quantity }
-let activeModalProduct = null;
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -116,7 +115,9 @@ function render() {
 
   // Wire up interactions for the freshly rendered cards
   productGrid.querySelectorAll('.product-visual, .product-name').forEach(el => {
-    el.addEventListener('click', () => openModal(el.dataset.id));
+    el.addEventListener('click', () => {
+      window.location.href = `product.html?id=${el.dataset.id}`;
+    });
   });
 
   productGrid.querySelectorAll('.add-btn').forEach(btn => {
@@ -131,38 +132,6 @@ function render() {
     });
   });
 }
-
-/* ============================================
-   Quick view modal
-   ============================================ */
-const modalBackdrop = document.getElementById('modalBackdrop');
-
-function openModal(id) {
-  const p = PRODUCTS.find(prod => prod.id === id);
-  if (!p) return;
-  activeModalProduct = p;
-
-  document.getElementById('modalVisual').style.background = `${p.color}22`;
-  document.getElementById('modalVisual').textContent = p.icon;
-  document.getElementById('modalCategory').textContent = p.category;
-  document.getElementById('modalTitle').textContent = p.name;
-  document.getElementById('modalRating').innerHTML = `${renderStars(p.rating)} <b>${p.rating}</b> (${p.reviews} reviews)`;
-  document.getElementById('modalDesc').textContent = p.desc;
-  document.getElementById('modalPrice').textContent = formatPrice(p.price);
-
-  modalBackdrop.hidden = false;
-}
-
-document.getElementById('modalClose').addEventListener('click', () => modalBackdrop.hidden = true);
-modalBackdrop.addEventListener('click', (e) => {
-  if (e.target === modalBackdrop) modalBackdrop.hidden = true;
-});
-
-document.getElementById('modalAddBtn').addEventListener('click', () => {
-  if (activeModalProduct) addToCart(activeModalProduct.id);
-  modalBackdrop.hidden = true;
-  openCart();
-});
 
 /* ============================================
    Cart logic
@@ -301,7 +270,6 @@ document.getElementById('confirmCloseBtn').addEventListener('click', () => {
    ============================================ */
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
-  if (!modalBackdrop.hidden) modalBackdrop.hidden = true;
   if (!confirmBackdrop.hidden) confirmBackdrop.hidden = true;
   if (cartDrawer.classList.contains('open')) closeCart();
 });
