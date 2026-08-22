@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Basketful</title>
+<meta name="description" content="Product details on Basketful, a small storefront built with vanilla HTML, CSS and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="logo">Basketful<span class="logo-dot">.</span></a>
+    <a href="index.html" class="back-link">← All products</a>
+    <a href="index.html" class="cart-toggle" id="cartLink" aria-label="View cart">
+      <span class="cart-icon">🧺</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ PRODUCT DETAIL ============ -->
+<main class="wrap product-page">
+  <div id="productDetail">
+    <!-- filled by product-page.js -->
+  </div>
+
+  <section class="related-section" id="relatedSection" hidden>
+    <h2>You might also like</h2>
+    <div class="related-grid" id="relatedGrid">
+      <!-- filled by product-page.js -->
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>Built by Arta Solhivand — plain HTML, CSS &amp; JavaScript, no frameworks.</p>
+    <p class="footer-year">© <span id="year"></span> Basketful</p>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script src="product-page.js"></script>
+</body>
+</html>
