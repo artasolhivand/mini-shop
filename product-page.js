@@ -57,6 +57,7 @@ function updateCartCount() {
 const detailEl = document.getElementById('productDetail');
 
 function renderNotFound() {
+  document.title = 'Product not found — Basketful';
   detailEl.innerHTML = `
     <div class="not-found">
       <h1>Product not found</h1>

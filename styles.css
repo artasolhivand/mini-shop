@@ -643,7 +643,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .related-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 16px;
 }
 
